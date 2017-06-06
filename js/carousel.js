@@ -128,4 +128,4 @@ var carousel = (function () {
     }
 })();
 
-carousel.init($('#carousel-box'));
+carousel.init($('.carousel-box'));
