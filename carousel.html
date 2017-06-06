@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carousel</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        #carousel-box{
+            margin:40px auto;
+            width:300px;
+            height:200px;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel{
+            width:500%;
+            position: relative;
+        }
+        .carousel:after{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        .carousel > li{
+            float:left;
+            width:20%;
+            height:200px;
+            font-size:0;
+        }
+        .carousel > li > img{
+            width:100%;
+            height:100%;
+        }
+        .arrow{
+            display: block;
+            width:20px;
+            height:20px;
+            background-color:#ccc;
+            border:none;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            font-size: 16px;
+            top:50%;
+            transform: translateY(-50%);
+            outline: none;
+            cursor: pointer;
+        }
+        .arrow-left{
+            left:5%;
+        }
+        .arrow-right{
+            right:5%;
+        }
+        .bottom-nav > li{
+            display: inline-block;
+            width:10px;
+            height:10px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color:#ccc;
+            margin-right:10px;
+        }
+        .bottom-nav{
+            position: absolute;
+            bottom:5%;
+            left:50%;
+            transform: translateX(-50%)
+        }
+        .bottom-nav > .active{
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="carousel-box">
+        <!--图片轮播-->
+        <ul class="carousel">
+            <li>
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="">
+            </li>
+        </ul>
+        <!--左右按钮-->
+        <button class="arrow arrow-left"> < </button>
+        <button class="arrow arrow-right"> > </button>
+        <!--底部按钮-->
+        <ul class="bottom-nav">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script src="js/jquery-1.11.2.js"></script>
+<script src="js/carousel.js"></script>
+</html>
