@@ -11,7 +11,9 @@
             margin: 0;
             padding: 0;
         }
-
+        li{
+            list-style: none;
+        }
         button {
             background-color: #953523;
             padding: 13px;
@@ -19,6 +21,8 @@
             border-radius: 10px;
             color: white;
             margin-right: 10px;
+            cursor: pointer;
+            outline: none;
         }
 
         .cover {
@@ -29,10 +33,9 @@
             top: 0;
             left: 0;
             opacity: 0.6;
-            display: none;
         }
 
-        .modal-box {
+        .dialog {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -41,7 +44,6 @@
             background-color: lightgray;
             min-width: 300px;
             border-radius: 10px;
-            display: none;
         }
 
         .header {
@@ -51,7 +53,7 @@
             position: relative;
         }
 
-        .close {
+        .btn-close {
             position: absolute;
             right: 10px;
             top: 50%;
@@ -59,7 +61,7 @@
             cursor: pointer;
         }
 
-        .section {
+        .content {
             padding: 30px 10px;
         }
 
@@ -75,32 +77,27 @@
 </head>
 
 <body>
-    <div class="display">
-        <div class="btn-wrap">
-            <button class="one">按钮一</button>
-            <button class="two">按钮二</button>
-            <button class="three">按钮三</button>
-            <button class="four">按钮四</button>
-            <button class="five">按钮五</button>
-        </div>
+    <div class="btn-wrap">
+        <button class="open1">按钮一</button>
+        <button class="open2">按钮二</button>
+        <button class="open3">按钮三</button>
+        <button class="open4">按钮四</button>
+        <button class="open5">按钮五</button>
     </div>
-    <div class="cover"></div>
-    <div class="modal-box">
+    <!--<div class="cover"></div>
+    <div class="dialog">
         <div class="header">
             <h3>Modal</h3>
-            <span class="close">X</span>
+            <span class="btn-close">X</span>
         </div>
-        <div class="section">
+        <div class="content">
             hello world!!!!!
         </div>
         <div class="footer">
-            <button>OK</button>
-            <button>CANCEL</button>
+            <button class="confirm">OK</button>
+            <button class="cancel">CANCEL</button>
         </div>
-    </div>
-    <div class="modal-box">
-        
-    </div>
+    </div>-->
 </body>
 <script src="js/jquery-1.11.2.js"></script>
 <script src="js/modal.js"></script>
