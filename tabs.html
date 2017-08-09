@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tab组件化 案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #tabs {
+      width: 800px;
+      margin: 100px auto;
+    }
+
+    .tab-header li {
+      float: left;
+      width: 33.3333333%;
+      box-sizing: border-box;
+      text-align: center;
+      border: 1px solid #333;
+      padding: 20px 0;
+      cursor: pointer;
+    }
+
+    .tab-header .active {
+      background-color: green;
+      color: #fff;
+    }
+
+    .tab-container {
+      border: 1px solid #333;
+    }
+
+    .tab-container .active {
+      display: block;
+    }
+
+    .tab-container li {
+      display: none;
+      padding: 150px 0;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tabs">
+    <ul class="tab-header">
+      <li class="active">卡1</li>
+      <li>卡2</li>
+      <li>卡3</li>
+    </ul>
+    <ul class="tab-container">
+      <li class="active">内容一</li>
+      <li>内容二</li>
+      <li>内容三</li>
+    </ul>
+  </div>
+</body>
+<script>
+  var tab = (function () {
+    function Tab(ct) {
+      this.ct = ct;
+      this.init(); // 初始化
+      this.bind(); // 绑定事件
+    }
+    // 初始化
+    Tab.prototype.init = function () {
+      this.tabLis = this.ct.querySelectorAll('.tab-header>li'); // tab头部声明
+      this.tabPanels = this.ct.querySelectorAll('.tab-container>li'); // tab内容声明
+    }
+    // 绑定
+    Tab.prototype.bind = function () {
+      var _this = this; // 防止this指向改变;
+      this.tabLis.forEach(function (tabli) {
+        tabli.onclick = function (e) {
+          var target = e.target; // 捕捉点击的元素
+          var index = [].indexOf.call(_this.tabLis, target); // 转换成数组
+          //头部切换卡
+          _this.tabLis.forEach(function (li) {
+            li.classList.remove('active');
+          })
+          target.classList.add('active');
+          //点击哪个选项卡出现哪个内容,利用display，事先已经设置好class
+          _this.tabPanels.forEach(function (panels) {
+            panels.classList.remove('active');
+          })
+          _this.tabPanels[index].classList.add('active');
+        }
+      })
+    }
+    return {
+      render: function (targets) {
+        targets.forEach(function (ct) {
+          new Tab(ct)
+        })
+      }
+    }
+  })();
+  tab.render(document.querySelectorAll('#tabs'))
+</script>
+<script>
+  /*
+  ** 1.属性
+  ** 2.方法
+  ** 3.事件
+  */
+  var tab = (function(){
+    function Tab(ct){
+      this.ct = ct;
+      this.init();
+      this.bind();
+    }
+    Tab.prototype = {
+      init:function(){
+        this.tabLis = this.ct.querySelector('.tab-header');
+        this.panels = this.ct.querySelector('.tab-container');
+      },
+      bind:function(){
+        var _this = this;
+        tabLis.forEach(function(element){
+          element.onclick = function(e){
+            var target = e.target;
+            var index = [].indexOf.call(_this.tabLis,target)
+            _this.tabLis.forEach(function(li){
+              li.classList.remove('active')
+            })
+            target.classList.add('active')
+            _this.panels.forEach(function(panels){
+              panels.classList.remove('active')
+            })
+            this.panels[index].classList.add('active')
+          }
+        })
+      }
+    }
+  })
+</script>
+</html>
